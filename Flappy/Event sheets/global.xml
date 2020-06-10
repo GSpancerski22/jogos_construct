@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>global</name>
+    <events>
+        <variable constant="1" name="TIME_MApE" sid="226211513861276" static="0" type="number">3</variable>
+        <variable constant="1" name="SCORE_BRONZE" sid="611059289065151" static="0" type="number">15</variable>
+        <variable constant="1" name="SCORE_PRATA" sid="728914336484623" static="0" type="number">30</variable>
+        <variable constant="1" name="SCORE_OURO" sid="480159309685299" static="0" type="number">45</variable>
+        <variable constant="0" name="score" sid="134590286192328" static="0" type="number">0</variable>
+    </events>
+</c2eventsheet>

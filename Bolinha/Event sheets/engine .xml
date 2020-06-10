@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>engine </name>
+    <events>
+        <comment>ao apertar o botão esquerdo do mouse </comment>
+        <comment>spawna a bala no fim da arma </comment>
+        <comment>ele aplica o impulso com a distancia dos dois </comment>
+        <comment>ao apertar ele ira diminuir um no var max shoot</comment>
+        <comment>é uma comparação de var, entre o enquanto max &gt; 0</comment>
+        <event-block sid="386924516759411">
+            <conditions>
+                <condition id="0" name="On click" sid="883852924050330" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="358681836961606" type="System">
+                    <param id="0" name="Variable">max_shoot</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="195563454530856" type="Personagem">
+                    <param id="0" name="Object">bala</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="644679741425166" type="bala">
+                    <param id="0" name="Impulse">distance(bala.X, bala.Y,Mouse.X,Mouse.Y) / force</param>
+                    <param id="1" name="Angle">Personagem.Angle</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-11" name="Subtract from" sid="669116716406833" type="System">
+                    <param id="0" name="Variable">max_shoot</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>o tempo todo aparercera o score e o shoots </comment>
+        <comment>ao colidir destroira e spanara um effect </comment>
+        <comment>tambem calculara o score e add ao box end</comment>
+        <event-block sid="124528829513614">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="924932745957667" type="bala">
+                    <param id="0" name="Object">Sprite7</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="291762223455513" type="Sprite7" />
+                <action id="0" name="Spawn another object" sid="354526750887992" type="Sprite7">
+                    <param id="0" name="Object">Particles</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-10" name="Add to" sid="364093973720058" type="System">
+                    <param id="0" name="Variable">box_end</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-10" name="Add to" sid="116009799467832" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">floor(random(10,20))</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="692220614896095" type="Sprite7">
+                    <param id="0" name="Object">Particles2</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="356538328987607" type="Sprite7">
+                    <param id="0" name="Object">Particles3</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="630200584193544">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="934024502616482" type="boxgold">
+                    <param id="0" name="Object">bala</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="791582652640404" type="boxgold" />
+                <action id="-10" name="Add to" sid="475330628699284" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">40</param>
+                </action>
+                <action id="-10" name="Add to" sid="292269279893564" type="System">
+                    <param id="0" name="Variable">max_shoot</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="983339256670219">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="795670148003088" type="System" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="163015494226978" type="Personagem">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="0" name="Set text" sid="712144082826424" type="score">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp; score</param>
+                </action>
+                <action id="0" name="Set text" sid="144702094955921" type="max_shoot">
+                    <param id="0" name="Text">&quot;Shoots: &quot;&amp; max_shoot</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Ao iniciar o jogo contara contas caixas tem e define que o maximo de 5 balas </comment>
+        <event-block sid="675674944382707">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="209748034965950" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="231387192780465" type="System">
+                    <param id="0" name="Variable">box_start</param>
+                    <param id="1" name="Value">Sprite7.Count</param>
+                </action>
+                <action id="-9" name="Set value" sid="806408344381087" type="System">
+                    <param id="0" name="Variable">max_shoot</param>
+                    <param id="1" name="Value">5</param>
+                </action>
+                <action id="0" name="Call function" sid="411995044265709" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="556185045237533">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="588066867637434" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1000</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="155451742580790" type="System">
+                            <param id="0" name="Variable">max_shoot</param>
+                            <param id="1" name="Value">7</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Comparas aa var e se for == ele restarta</comment>
+        <event-block sid="158758305360476">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="700624029431952" type="System">
+                    <param id="0" name="First value">box_start</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">box_end</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="125004676712611" type="System">
+                    <param id="0" name="Layout">&quot;level&quot;&amp;Personagem.level</param>
+                </action>
+                <action id="-9" name="Set value" sid="411960437220052" type="System">
+                    <param id="0" name="Variable">box_end</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="220844365444339">
+            <conditions>
+                <condition id="0" name="On function" sid="651701652657406" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="222910228251749" type="Sprite16">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="257997384118066" type="nao2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="885168382929041" type="sim2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="412595013692180" type="SpriteFont2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="718859723438390">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="453070828994606" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Menu</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="803500708065825" type="Function">
+                    <param id="0" name="Name">&quot;Menu&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-3" name="Set position" sid="509409993860005" type="nao2">
+                    <param id="0" name="X">518</param>
+                    <param id="1" name="Y">272</param>
+                </action>
+                <action id="-3" name="Set position" sid="336830437307571" type="sim2">
+                    <param id="0" name="X">393</param>
+                    <param id="1" name="Y"> 274</param>
+                </action>
+                <action id="-3" name="Set position" sid="505780454589989" type="SpriteFont2">
+                    <param id="0" name="X">354</param>
+                    <param id="1" name="Y"> 198</param>
+                </action>
+                <action id="-3" name="Set position" sid="865062309004991" type="Sprite16">
+                    <param id="0" name="X">490</param>
+                    <param id="1" name="Y"> 222</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="534153535995767">
+            <conditions>
+                <condition id="0" name="On function" sid="493115846123342" type="Function">
+                    <param id="0" name="Name">&quot;Menu&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="139183834663947" type="Sprite16">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="268816955505170" type="nao2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="193259962434551" type="sim2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="359096191192037" type="SpriteFont2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="900856277817800">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="476414191745453" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">sim2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="917020223933751" type="System">
+                    <param id="0" name="Layout">&quot;Menu&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="208819966707559">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="385765940659606" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">nao2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="503543725066525" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="243986220740351">
+            <conditions>
+                <condition id="0" name="On function" sid="213179589519460" type="Function">
+                    <param id="0" name="Name">&quot;GameOver&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="423727143396612" type="Sprite18">
+                    <param id="0" name="X">484.5</param>
+                    <param id="1" name="Y">224</param>
+                </action>
+                <action id="-3" name="Set position" sid="945683359820298" type="sim">
+                    <param id="0" name="X">420.359</param>
+                    <param id="1" name="Y">239.054</param>
+                </action>
+                <action id="-3" name="Set position" sid="406588276317741" type="nao">
+                    <param id="0" name="X">576.359</param>
+                    <param id="1" name="Y">239.054</param>
+                </action>
+                <action id="-3" name="Set position" sid="385589093947825" type="SpriteFont6">
+                    <param id="0" name="X">373.41</param>
+                    <param id="1" name="Y">152.791</param>
+                </action>
+                <action id="-3" name="Set position" sid="102563903241392" type="SpriteFont5">
+                    <param id="0" name="X">417.217</param>
+                    <param id="1" name="Y"> 66.888</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="728430056895553">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="633364316165141" type="System">
+                    <param id="0" name="Variable">max_shoot</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="218410816714665" type="System">
+                    <param id="0" name="Seconds">2.0</param>
+                </action>
+                <action id="0" name="Call function" sid="714307469415621" type="Function">
+                    <param id="0" name="Name">&quot;GameOver&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="361949763768953">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="943585891741751" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">nao</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="489961688396031" type="System">
+                    <param id="0" name="Layout">&quot;Menu&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="542233480212936">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="755627320246733" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">sim</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="670087855496063" type="System" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

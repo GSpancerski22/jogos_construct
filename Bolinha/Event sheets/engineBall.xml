@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>engineBall</name>
+    <events>
+        <event-block sid="833258127895217">
+            <conditions>
+                <condition id="2" name="Is in touch" sid="899596535762870" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="574709123279154" type="Sprite">
+                    <param id="0" name="X">Touch.X</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="368073161935182">
+            <conditions>
+                <condition id="0" name="On any touch start" sid="107331538178060" type="Touch" />
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" sid="858514377339107" type="ball">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="687925571449052">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="673671460803826" type="System" />
+                <condition id="-14" name="Compare variable" sid="100188339628809" type="System">
+                    <param id="0" name="Variable">isStart</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-8" name="Set angle" sid="155756693629879" type="ball">
+                    <param id="0" name="Angle">random(300, 220)</param>
+                </action>
+                <action id="-9" name="Set value" sid="438375050742176" type="System">
+                    <param id="0" name="Variable">isStart</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="269548387409406" type="System">
+                    <param id="0" name="Variable">boxStart</param>
+                    <param id="1" name="Value">obj.Count</param>
+                </action>
+                <action id="0" name="Call function" sid="366245039009252" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="793051175847805">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="268787005354649" type="ball">
+                    <param id="0" name="Object">obj</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="275653699019868" type="obj">
+                    <param id="0" name="Frame number">Self.AnimationFrame+1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="101996434686959">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="745166247535568" type="System">
+                            <param id="0" name="First value">obj.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="393436800120968" type="obj" />
+                        <action id="-10" name="Add to" sid="118278394109374" type="System">
+                            <param id="0" name="Variable">Score2</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="710129166404749" type="System">
+                            <param id="0" name="Variable">boxEnd</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="225154031251275">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="690687566263096" type="obj" />
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="167001641350447" type="System">
+                    <param id="0" name="Variable">Score2</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-7" name="Set size" sid="536362599616593" type="Sprite">
+                    <param id="0" name="Width">300</param>
+                    <param id="1" name="Height">33</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="151205912154251">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="571711770283696" type="System">
+                    <param id="0" name="Variable">boxEnd</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">boxStart</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="469621170260504" type="System">
+                    <param id="0" name="Layout">&quot;ball&quot;&amp;Sprite.varBall</param>
+                </action>
+                <action id="-9" name="Set value" sid="674437687343035" type="System">
+                    <param id="0" name="Variable">boxEnd</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="556940338368120">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="373344630265820" type="ball" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="123612382824704" type="Function">
+                    <param id="0" name="Name">&quot;GameOver&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="299563564283663">
+            <conditions>
+                <condition id="0" name="On function" sid="704718064896151" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="299670451586187" type="Sprite16">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="194021198563088" type="nao2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="481131531460049" type="sim2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="301963607689258" type="SpriteFont2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="613917330620002">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="821755016155746" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Menu</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="742213856467692" type="Function">
+                    <param id="0" name="Name">&quot;Menu&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-3" name="Set position" sid="588591949888723" type="nao2">
+                    <param id="0" name="X">518</param>
+                    <param id="1" name="Y">272</param>
+                </action>
+                <action id="-3" name="Set position" sid="482372547992390" type="sim2">
+                    <param id="0" name="X">393</param>
+                    <param id="1" name="Y"> 274</param>
+                </action>
+                <action id="-3" name="Set position" sid="615833225598725" type="SpriteFont2">
+                    <param id="0" name="X">354</param>
+                    <param id="1" name="Y"> 198</param>
+                </action>
+                <action id="-3" name="Set position" sid="568717123736214" type="Sprite16">
+                    <param id="0" name="X">490</param>
+                    <param id="1" name="Y"> 222</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="377434463014747">
+            <conditions>
+                <condition id="0" name="On function" sid="977695816803043" type="Function">
+                    <param id="0" name="Name">&quot;Menu&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="977610292561503" type="Sprite16">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="824214775404003" type="nao2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="812713929925276" type="sim2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="238957982382927" type="SpriteFont2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="473357870145732">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="273350364230805" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">sim2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="808218185746735" type="System">
+                    <param id="0" name="Layout">&quot;Menu&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="831375200818382">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="297779258926999" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">nao2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="160761375331633" type="Function">
+                    <param id="0" name="Name">&quot;escondeLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-13" name="Set time scale" sid="349451066628737" type="System">
+                    <param id="0" name="Time scale">1.0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="716460387360774">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="911287297228445" type="gold">
+                    <param id="0" name="Object">ball</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="748733049703629" type="System">
+                    <param id="0" name="Variable">Score2</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="203488080833609" type="gold" />
+            </actions>
+        </event-block>
+        <event-block sid="542151608896505">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="894274164181984" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="529659360851077" type="scoret">
+                    <param id="0" name="Text">&quot;Score: &quot;&amp;Score2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="499545950338896">
+            <conditions>
+                <condition id="0" name="On function" sid="592573479339428" type="Function">
+                    <param id="0" name="Name">&quot;GameOver&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="556583858809347" type="Sprite18">
+                    <param id="0" name="X">484.5</param>
+                    <param id="1" name="Y">224</param>
+                </action>
+                <action id="-3" name="Set position" sid="376757798441046" type="sim">
+                    <param id="0" name="X">420.359</param>
+                    <param id="1" name="Y">239.054</param>
+                </action>
+                <action id="-3" name="Set position" sid="627471771690134" type="nao">
+                    <param id="0" name="X">576.359</param>
+                    <param id="1" name="Y">239.054</param>
+                </action>
+                <action id="-3" name="Set position" sid="353254773631398" type="SpriteFont6">
+                    <param id="0" name="X">373.41</param>
+                    <param id="1" name="Y">152.791</param>
+                </action>
+                <action id="-3" name="Set position" sid="590858363701107" type="SpriteFont5">
+                    <param id="0" name="X">417.217</param>
+                    <param id="1" name="Y"> 66.888</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="436470902844552">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="427631541150131" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">nao</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="736680479725223" type="System">
+                    <param id="0" name="Layout">&quot;Menu&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="617743877047029">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="616061309018567" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">sim</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="207439633479170" type="System" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GlobalBall</name>
+    <events>
+        <variable constant="0" name="Time2" sid="486995444135192" static="0" type="number">0</variable>
+        <variable constant="0" name="Time1" sid="566764642521460" static="0" type="number">0</variable>
+        <variable constant="0" name="Score2" sid="376451690254496" static="0" type="number">0</variable>
+        <variable constant="0" name="Pwer1" sid="682253518326166" static="0" type="number">0</variable>
+        <variable constant="0" name="boxEnd" sid="148758246103892" static="0" type="number">0</variable>
+        <variable constant="0" name="boxStart" sid="409120135846789" static="0" type="number">0</variable>
+        <variable constant="0" name="isStart" sid="882264484336233" static="0" type="number">0</variable>
+    </events>
+</c2eventsheet>

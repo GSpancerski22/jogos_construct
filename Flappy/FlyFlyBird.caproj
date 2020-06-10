@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>FlyFlyBird</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.mycompany.myapp</app-id>
+    <unique-id>2ds8tq4p4gl33</unique-id>
+    <saved-with-version>26200</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Spritefont2" version="1">Sprite font</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>320</width>
+        <height>580</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Orientations">Any</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="background" sid="829571788795457">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="723011274624859" speed="5">
+                    <frame duration="1" hotspotX="0.503497" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\background.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btn_start" sid="563356363002408">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="285929144616460" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.510204" original-source="C:\Users\Alfa\Downloads\0309\Flappy\result\start.png">
+                        <collision-poly>
+                            <point x="0.446429" y="0.510204" />
+                            <point x="0.5" y="0" />
+                            <point x="0.357143" y="0.734694" />
+                            <point x="0.535714" y="0.489796" />
+                            <point x="0.875" y="0.857143" />
+                            <point x="0.5" y="1" />
+                            <point x="0.125" y="0.857143" />
+                            <point x="0.446429" y="0.489796" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="683471118410459">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="flupflup" sid="103810467310643">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="660501365786285">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="3" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="386518446981391" speed="10">
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\flappy\1.png" />
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\flappy\2.png" />
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\flappy\3.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="canoDown" sid="980963334189162">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="680297292905767">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="608394917205494" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\Canos\pipe-bottom.png">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="canoUp" sid="393792970080092">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="496568724496856">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="129404806222657" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Alfa\Downloads\0309\Flappy\Canos\pipe-top.png">
+                        <collision-poly>
+                            <point x="0.0384615" y="0.00625" />
+                            <point x="0.961538" y="0.00625" />
+                            <point x="0.961538" y="0.5" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0.0384615" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="chaoAmarelo" sid="807380482746720">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\Alfa\Downloads\0309\Flappy\result\chao1.png" />
+        </object-type>
+        <object-type name="graminha" sid="374278806631834">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid" sid="555713473167759">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture original-source="C:\Users\Alfa\Downloads\0309\Flappy\result\chao2.png" />
+        </object-type>
+        <object-type name="score" sid="623174258208672">
+            <plugin id="Spritefont2" />
+            <texture />
+        </object-type>
+        <object-type name="trecoAmarelo" sid="968736664688421">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="148653402334858" speed="5">
+                    <frame duration="1" hotspotX="0.504425" hotspotY="0.508772" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\resultado.png">
+                        <collision-poly>
+                            <point x="0.0176991" y="0.0350877" />
+                            <point x="0.495575" y="0" />
+                            <point x="0.982301" y="0.0350877" />
+                            <point x="1" y="0.491228" />
+                            <point x="0.982301" y="0.964912" />
+                            <point x="0.495575" y="1" />
+                            <point x="0.0176991" y="0.964912" />
+                            <point x="0" y="0.491228" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="menu" sid="698840452602935">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="112012402268261" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\menu.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="cOINcOIN" sid="599260647217781">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="657916374714608" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\bronze.png">
+                        <collision-poly>
+                            <point x="0.136364" y="0.136364" />
+                            <point x="0.5" y="0" />
+                            <point x="0.863636" y="0.136364" />
+                            <point x="1" y="0.5" />
+                            <point x="0.863636" y="0.863636" />
+                            <point x="0.5" y="1" />
+                            <point x="0.136364" y="0.863636" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\prata.png">
+                        <collision-poly>
+                            <point x="0.136364" y="0.136364" />
+                            <point x="0.5" y="0" />
+                            <point x="0.863636" y="0.136364" />
+                            <point x="1" y="0.5" />
+                            <point x="0.863636" y="0.863636" />
+                            <point x="0.5" y="1" />
+                            <point x="0.136364" y="0.863636" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\ouro.png">
+                        <collision-poly>
+                            <point x="0.136364" y="0.136364" />
+                            <point x="0.5" y="0" />
+                            <point x="0.863636" y="0.136364" />
+                            <point x="1" y="0.5" />
+                            <point x="0.863636" y="0.863636" />
+                            <point x="0.5" y="1" />
+                            <point x="0.136364" y="0.863636" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="WebStorage" sid="460234931181998">
+            <plugin id="WebStorage" />
+        </object-type>
+        <object-type name="Function" sid="454031146416327">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="best" sid="689157968584459">
+            <plugin id="Spritefont2" />
+            <texture />
+        </object-type>
+        <object-type name="Sprite" sid="123709969252026">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="597335463088512" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.571429" original-source="D:\Faculdade\Joguinhos\0309\Flappy\result\new.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite2" sid="924675938689914">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="464242319152209" speed="5">
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Desktop\Flappy\flappy\1.png">
+                        <collision-poly>
+                            <point x="0.176471" y="0.25" />
+                            <point x="0.470588" y="0" />
+                            <point x="0.823529" y="0.25" />
+                            <point x="0.941176" y="0.5" />
+                            <point x="0.882353" y="0.833333" />
+                            <point x="0.470588" y="1" />
+                            <point x="0.117647" y="0.833333" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Desktop\Flappy\flappy\2.png" />
+                    <frame duration="1" hotspotX="0.529412" hotspotY="0.5" original-source="C:\Users\Alfa\Desktop\Flappy\flappy\3.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>splashScreen.xml</layout>
+        <layout>start.xml</layout>
+        <layout>game.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>splashScreen.xml</event-sheet>
+        <event-sheet>start.xml</event-sheet>
+        <event-sheet>game.xml</event-sheet>
+        <event-sheet>global.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch" uid="4">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="WebStorage" uid="16" />
+        <global-instance type="Function" uid="17" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

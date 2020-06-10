@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>game</name>
+    <events>
+        <comment>O set vetor Y vai fazer ele ir &quot;saltando&quot; conforme os cliques na tela</comment>
+        <comment>o vector y recebe -800 fazendo subir</comment>
+        <event-block sid="275779192215685">
+            <conditions>
+                <condition id="0" name="On any touch start" sid="332658037831457" type="Touch" />
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="9" name="Set vector Y" sid="333545393446862" type="flupflup">
+                    <param id="0" name="Vector Y">self.Y - 800</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>a todo momento se o flap estiver na tela // os obj iram reduzir -2 assim fazendo andar</comment>
+        <event-block sid="656052458083980">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="316159925203501" type="System" />
+                <condition id="-16" name="Is on layer" sid="652758568013006" type="flupflup">
+                    <param id="0" name="Layer">&quot;main&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="565884495096015" type="chaoAmarelo">
+                    <param id="0" name="X">Self.X -2</param>
+                </action>
+                <action id="-1" name="Set X" sid="311728199774626" type="graminha">
+                    <param id="0" name="X">Self.X-2</param>
+                </action>
+                <action id="-1" name="Set X" sid="467673144964232" type="canoUp">
+                    <param id="0" name="X">Self.X-2</param>
+                </action>
+                <action id="-1" name="Set X" sid="855286358424082" type="canoDown">
+                    <param id="0" name="X">self.X-2</param>
+                </action>
+                <action id="0" name="Set text" sid="569292399979700" type="score">
+                    <param id="0" name="Text">score</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Assim q o chao sair do cenario ele retorna para o zero</comment>
+        <event-block sid="814227936080860">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="809009237103698" type="chaoAmarelo">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">-100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="323576642917848" type="chaoAmarelo">
+                    <param id="0" name="X">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Assim q o grama sair do cenario ele retorna para o zero</comment>
+        <event-block sid="805805882052573">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="491386340237042" type="graminha">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">-100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="397174764507900" type="graminha">
+                    <param id="0" name="X">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>a cada x segundo q é time_mape </comment>
+        <comment>cria o obj pipe assim variando suas posicoes </comment>
+        <comment>o cano up recebe do down seu x e seu y é baseado no down</comment>
+        <event-block sid="762243453537480">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="229348607994101" type="System">
+                    <param id="0" name="Interval (seconds)">TIME_MAPE</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="838857722408866" type="System">
+                    <param id="0" name="Object to create">canoUp</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="X">400</param>
+                    <param id="3" name="Y">random(50,-250)</param>
+                </action>
+                <action id="-3" name="Create object" sid="183967077648700" type="System">
+                    <param id="0" name="Object to create">canoDown</param>
+                    <param id="1" name="Layer">&quot;main&quot;</param>
+                    <param id="2" name="X">canoUp.X</param>
+                    <param id="3" name="Y">canoUp.Y + 700</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>sao os eventos que chama a function showlayerscore</comment>
+        <event-block any="1" sid="453300294534185">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="830933653402825" type="flupflup">
+                    <param id="0" name="Object">canoUp</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-26" name="Restart layout" sid="692679994642879" type="System" />
+                <action id="0" name="Call function" sid="493241548392306" type="Function">
+                    <param id="0" name="Name">&quot;showLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="819681496573130">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="145636381117804" type="flupflup">
+                    <param id="0" name="Object">canoDown</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-26" name="Restart layout" sid="857325993830486" type="System" />
+                <action id="0" name="Call function" sid="428701044968670" type="Function">
+                    <param id="0" name="Name">&quot;showLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="930525740317854">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="225429343488272" type="flupflup" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="-26" name="Restart layout" sid="496332150650119" type="System" />
+                <action id="0" name="Call function" sid="818412318416990" type="Function">
+                    <param id="0" name="Name">&quot;showLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="717166511219150">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="112145415900304" type="flupflup">
+                    <param id="0" name="Object">graminha</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="553017658620742" type="Function">
+                    <param id="0" name="Name">&quot;showLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>para esconder os obj</comment>
+        <event-block sid="156766697486459">
+            <conditions>
+                <condition id="0" name="On function" sid="771006285827106" type="Function">
+                    <param id="0" name="Name">&quot;hiddenLayerScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="758448514703878" type="menu">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="277207569172750" type="cOINcOIN">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="410450680571604" type="trecoAmarelo">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="456996032597919" type="System">
+                    <param id="0" name="Layer">&quot;score&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="711962623693072" type="Sprite">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="296400797358925" type="best">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>é como sera feito o score / é a pontuacao / ele compara e se for igual ele pontuara</comment>
+        <event-block sid="777530548451866">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="855975743107939" type="canoDown">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="X co-ordinate">flupflup.X</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="363739939363556" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>ele chama a function q deixa as coisas invisivel</comment>
+        <event-block sid="946344459216464">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="511660570754357" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="708568598896695" type="Function">
+                    <param id="0" name="Name">&quot;hiddenLayerScore&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-9" name="Set value" sid="558838758165508" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>seta ao morrer aparecer algumas coisas </comment>
+        <event-block sid="188596878987612">
+            <conditions>
+                <condition id="0" name="On function" sid="588957875331158" type="Function">
+                    <param id="0" name="Name">&quot;showLayerScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="682153136146376" type="menu">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="822234174919858" type="score">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="485414523863582" type="cOINcOIN">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="647774914321176" type="trecoAmarelo">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-9" name="Destroy" sid="472785563536382" type="flupflup" />
+                <action id="-4" name="Set layer visible" sid="672705218152428" type="System">
+                    <param id="0" name="Layer">&quot;score&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="112073146848242" type="Sprite">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="251517034939529" type="best">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="0" name="Set text" sid="678891184874151" type="best">
+                    <param id="0" name="Text">WebStorage.LocalValue(&quot;bestScore&quot;)</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>se nao existir ele cria uma </comment>
+                <event-block sid="762643095115110">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="473404202451716" type="WebStorage">
+                            <param id="0" name="Key">&quot;bestScore&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="749115175530380" type="WebStorage">
+                            <param id="0" name="Key">&quot;bestScore&quot;</param>
+                            <param id="1" name="Value">score</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>e se o novo score for maior q o que ja tem ele substitui</comment>
+                <event-block sid="541946984040174">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="148618308126809" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">int(WebStorage.LocalValue(&quot;bestScore&quot;))</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="552787309997987" type="WebStorage">
+                            <param id="0" name="Key">&quot;bestScore&quot;</param>
+                            <param id="1" name="Value">score</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="404081983988354" type="Sprite">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>ele coloca visivel caso aucase o score bre3onze e segue trocando as frames //sao globais</comment>
+                <event-block sid="927601694690492">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="840902036346721" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">SCORE_BRONZE</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="793795071803292" type="cOINcOIN">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="668444967101361" type="cOINcOIN">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="968324201397259">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="315286609509575" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">SCORE_PRATA</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="107179525603545" type="cOINcOIN">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="130947660629163">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="984165442217371" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">SCORE_OURO</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="801921775546206" type="cOINcOIN">
+                            <param id="0" name="Frame number">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>para fazer o botao menu // o layer is visible é para nao funcionar se estiver invisivel</comment>
+        <event-block sid="983352389459194">
+            <conditions>
+                <condition id="3" name="On touched object" sid="735355082564554" type="Touch">
+                    <param id="0" name="Object">menu</param>
+                </condition>
+                <condition id="-9" name="Layer is visible" sid="154735992549936" type="System">
+                    <param id="0" name="Layer">&quot;score&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="399541619024074" type="System">
+                    <param id="0" name="Layout">&quot;start&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
